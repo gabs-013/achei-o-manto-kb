@@ -11,7 +11,7 @@ related:
   - ../../STATE.md
 ---
 
-# Mapa da <NOME DA KB>
+# Mapa da KB Achei o Manto
 
 > Comece por aqui. Este é o documento canônico de navegação da base.
 
@@ -19,14 +19,14 @@ related:
 
 > Cole aqui suas respostas às [oito perguntas fundamentais](../00-comece-aqui/01_perguntas-fundamentais.md).
 
-- **Objeto:** <o que esta KB representa>
-- **Públicos:** <quem lê>
-- **Camadas:** <uma camada | operacional → coletiva | ...>
-- **Privacidade:** <privado | semi-público | público> — nunca entra: <segredos, preços, ...>
-- **Manutenção:** <PR-only; quem dá merge; ritual de sessão>
-- **Agentes:** <Claude, Codex, nenhum>
-- **Frontmatter:** <leve (OKF) | rico>
-- **Ingestão de calls:** <sim, usa projeto/ | não>
+- **Objeto:** Marca Achei o Manto: catálogo, vendas e comunicação.
+- **Públicos:** Feito para outras IAs absorverem o conhecimento e produzirem a mesma saída de informação (ver `views/`).
+- **Camadas:** uma camada.
+- **Privacidade:** público — nunca entra: segredos, tokens, preços de custo, margens e dados pessoais de clientes.
+- **Manutenção:** PR-only; merge pelo dono (Gabriel); ritual uma sessão = uma branch = uma PR.
+- **Agentes:** Claude e outras IAs em geral; identificação por trailer `Co-Authored-By:` e prefixo de branch.
+- **Frontmatter:** leve (OKF).
+- **Ingestão de calls:** sim, usa `projeto/`.
 
 ## Estrutura
 
