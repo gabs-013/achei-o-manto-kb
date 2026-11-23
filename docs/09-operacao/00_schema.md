@@ -1,0 +1,116 @@
+---
+type: schema
+title: Schema da Knowledge Base
+description: Convenção de frontmatter — OKF leve como padrão, schema rico como modo avançado.
+tags: [schema, frontmatter, okf, governanca]
+resource: https://github.com/GoogleCloudPlatform/knowledge-catalog/tree/main/okf
+timestamp: 2026-06-23
+related:
+  - ../01-base/00_mapa.md
+  - ../../type/README.md
+  - 06_interoperabilidade-entre-bases.md
+---
+
+# Schema da Knowledge Base
+
+Todo documento estrutural começa com um bloco de **frontmatter** YAML. Ele torna a base
+buscável, filtrável e consumível por agentes sem perder a simplicidade do Markdown.
+
+Há dois níveis. **Comece pelo leve.** Enriqueça só quando a dor aparecer.
+
+## Nível 1 — OKF leve (padrão recomendado)
+
+Inspirado no [Open Knowledge Format](https://github.com/GoogleCloudPlatform/knowledge-catalog/tree/main/okf).
+**Único campo obrigatório: `type`.** Os demais são recomendados.
+
+```yaml
+---
+type: map                 # obrigatório — o papel da nota (ver type/)
+title: Nome legível       # recomendado
+description: Uma linha sobre o documento.
+tags: [contexto, exemplo] # lista curta
+timestamp: 2026-06-23     # AAAA-MM-DD
+related:                  # links relativos para notas relacionadas
+  - ../01-base/00_mapa.md
+---
+```
+
+Regras:
+
+- YAML simples, valores legíveis.
+- datas em `AAAA-MM-DD`.
+- `resource:` para apontar URL, repo ou sistema externo relacionado.
+- **nunca** coloque segredos, tokens, chaves, saldos ou dados privados no frontmatter.
+
+## Nível 2 — Schema rico (modo avançado, opcional)
+
+Para KB institucional consumida por vários agentes, onde importa rastrear autoridade,
+público-alvo e ciclo de vida de cada documento. Adicione ao bloco leve:
+
+```yaml
+---
+id: "kb.area.nome"        # identificador estável e único
+type: map
+category: core            # core | content | operations | ...
+title: ""
+summary: ""
+status: draft             # draft | active | reference | deprecated
+authority: reference      # canonical | reference | derived
+audience:                 # quem é o leitor
+  - equipe
+  - agentes
+owner: ""                 # responsável pelo documento
+last_reviewed: ""         # AAAA-MM-DD da última revisão
+order: 0                  # ordem dentro da seção
+tags: []
+related: []
+---
+```
+
+Quando o documento nasce de uma fonte, circula entre bases ou contém material sensível,
+adicione somente os campos operacionais necessários:
+
+```yaml
+---
+id: "event-AAAA-MM-DD-exemplo"
+type: event
+status: reviewed           # raw | reviewed | canonical | publishable | archived
+privacy: private           # private-local | private | restricted | public
+availability: repo-private # local | repo-private | partner-shared | public
+source_refs: []            # fontes consultadas diretamente
+derived_from: []           # origens causais deste artefato
+owner: ""                  # quem responde editorialmente pelo registro
+---
+```
+
+### Distinções que não devem ser comprimidas
+
+- `authority` diz quanto o documento é confiável como referência.
+- `status` diz em que etapa editorial ele está.
+- `privacy` diz quem pode acessar o conteúdo.
+- `availability` diz onde o conteúdo pode ser encontrado ou entregue.
+- `source_refs` registra fontes usadas diretamente.
+- `derived_from` registra causalidade; `related` registra apenas associação contextual.
+
+OCR, resumo e transcrição automática são **derivados técnicos**, não a fonte original nem
+conteúdo canônico. Um documento só ganha `status: canonical` depois de revisão e promoção
+explícitas.
+
+## Como escolher
+
+| Use **leve** se… | Use **rico** se… |
+| --- | --- |
+| projeto pessoal, curso, home-lab | KB institucional de uma organização |
+| 1 a 2 mantenedores | vários agentes escrevendo em paralelo |
+| quer começar rápido | precisa rastrear autoridade e revisão |
+
+Você pode **migrar gradualmente** de leve para rico: documentos novos primeiro, depois os de
+governança, depois o resto. Não converta tudo de uma vez.
+
+Uma migração gradual também vale para proveniência: aplique primeiro em calls, materiais
+brutos, decisões e documentos que atravessam bases.
+
+## Tipos (`type`)
+
+A lista de tipos vive em [`type/`](../../type/README.md) e funciona como **lente de
+navegação**, não como schema rígido. Mantenha o conjunto pequeno.
