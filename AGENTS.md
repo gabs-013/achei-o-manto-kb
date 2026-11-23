@@ -1,8 +1,5 @@
 # Instruções para agentes
 
-> Ajuste este arquivo ao seu objeto ao instanciar a KB. Se nenhum agente de IA escreve na sua
-> base, você pode simplificá-lo ou removê-lo.
-
 Este repositório é uma Knowledge Base versionada em Markdown. Agentes devem preservar a
 diferença entre **material bruto**, **contexto de trabalho**, **decisão aprovada** e
 **conteúdo canônico**.
@@ -34,6 +31,7 @@ diferença entre **material bruto**, **contexto de trabalho**, **decisão aprova
 - Trabalhar em **branch própria** (prefixo `claude/*`, `codex/*`, …) e entregar por **Pull
   Request**, sem merge.
 - Declarar o modelo: trailer `Co-Authored-By:` no commit e seção "Modelo / Agente" na PR.
+- Saída consistente: ao produzir conteúdo da marca, seguir o léxico e a tese em `docs/01-base/`.
 - Antes de encerrar uma rodada com trabalho inacabado: atualizar log, backlog e handoff.
 - Nunca commitar segredos, dados pessoais brutos ou informação sensível.
 

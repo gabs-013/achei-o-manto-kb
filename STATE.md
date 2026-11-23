@@ -3,8 +3,8 @@ type: state
 title: Estado atual
 description: Leitura operacional curta da KB — frentes, decisões vigentes, próximo gate e lacunas.
 status: active
-owner: "<responsável pela base>"
-timestamp: AAAA-MM-DD
+owner: "gabs-013"
+timestamp: 2026-11-23
 related:
   - docs/01-base/00_mapa.md
   - projeto/README.md
@@ -17,25 +17,28 @@ related:
 
 ## Em uma frase
 
-<qual é a situação atual da base ou do objeto>
+Base da marca Achei o Manto criada a partir do template; decisões fundadoras registradas no mapa, aguardando revisão da PR #1.
 
 ## Frentes ativas
 
-- **<frente>** — <estado observável> — próximo gate: <marco ou decisão>
+- **Fundação da base** — mapa com decisões fundadoras em PR #1 — próximo gate: merge da PR #1
+- **Tese e léxico** — ainda não iniciados — próximo gate: após o merge da PR #1
 
 ## Decisões vigentes
 
-- <decisão que limita ou orienta o trabalho atual>
+- Base pública, uma camada, PR-only com merge do dono.
+- Feita para ser absorvida por outras IAs, com saída consistente (ver `views/`).
+- Nunca entram segredos, tokens, preços de custo, margens nem dados pessoais de clientes.
 
 ## Riscos e bloqueios
 
-- <risco, dependência ou bloqueio>
+- Base pública: revisar o que vai ao Git antes de cada PR.
 
 ## Sem movimento
 
-- **<frente>** — sem sinal desde <data>; esperando <pessoa, evento ou decisão>
+- **Nenhuma frente parada no momento.**
 
 ## Próxima revisão
 
-- **Data ou gatilho:** <AAAA-MM-DD ou evento>
-- **Responsável:** <nome>
+- **Data ou gatilho:** merge da PR #1
+- **Responsável:** gabs-013
